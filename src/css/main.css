@@ -1,0 +1,13 @@
+.nav-Container{
+    width: 200vh;
+    height: 6.5vh;
+    background-color: #18335d;
+    font-size: 11px;
+    color:#FFCE34;
+    float:left;
+    font-weight: bold;
+    padding-top: 0.5px;
+    padding-bottom: 2.5px;
+    padding-left: 250px;
+    position: fixed;
+}

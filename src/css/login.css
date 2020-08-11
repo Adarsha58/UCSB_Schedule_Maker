@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
+
+.login-container{
+    width: 40em;
+    height: 40em;
+    background: url(login-background.jpg) no-repeat center/cover;
+    margin-left: 10em;
+    transform: translateX(-3em);
+}
+
+.smalltitle {
+    color: white;
+    font-size: 40px;
+    font-family:'Lemonada', cursive;
+}
+
+.ucsb {
+    margin-left: 22.5em;
+    margin-top: 3.3em;
+    position: absolute;
+    
+}
+
+.maker {
+    margin-top: 8.5em;
+    margin-left: 34em;
+    position: absolute;
+}
+
+.titles {
+    font-size: 170px;
+    font-family:'Lemonada', cursive;
+    float: left;
+    position: absolute;
+    z-index: 10;
+    height: 2em;
+}
+
+.bigtitle {
+        position: absolute;
+        margin-top: 0.6em;
+        margin-left: 3.5em;
+        font-weight: bold;
+        background-image: linear-gradient(
+         to right,
+         #423332 0,
+        #cb9b51 22%, 
+         #f6e27a 45%,
+         #f6f2c0 50%,
+         #f6e27a 55%,
+         #cb9b51 78%,
+         #3d3737 100%
+         );
+        color:transparent;
+        -webkit-background-clip:text;        
+}
+
+.login-form{
+    transform: translate(49em,26em);
+    width: 40em;
+    background: rgba(0,0,0,.6);
+    padding: 40px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    border-radius: 5px;
+    border-style: double;
+    border: 1px solid white;
+}
+
+.row h1{
+   display: block;
+   width: 100%;
+   font-size: 20px;
+   margin-bottom: 0.25em;
+   color: goldenrod;
+   font-family: Asap, sans-serif;
+   font-weight: normal;
+}
+
+input{
+    width: 100%;
+    height: 2em;
+}
+
+

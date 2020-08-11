@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap");
+
+.nav-Container{
+    width: 147em;
+    height: 5.1em;
+    background-color: black;
+    font-size: 12px;
+    color:white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin: auto;
+    padding-left: 10em;
+    padding-top: 0.05px;
+    background-image: url(logo.png);
+    background-repeat: repeat-y;
+}
+
+.children-Container {
+    background-color: rgb(24, 39, 56);
+    top: 200em;
+    padding-left: 7em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    margin: auto;
+    width: 110.9em;
+}
+
+.footer-Container {
+    width: 118em;
+    height:7.7em;
+    background-color: black;
+    margin: auto;
+}

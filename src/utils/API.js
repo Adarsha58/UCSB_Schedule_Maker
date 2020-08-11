@@ -22,8 +22,7 @@ function classNameParser(className) {
 }
 
 const API = {
-  getClasses: (quarter, className, success) => {
-    console.log("hey I am called ", quarter, className);
+  getClasses: async (quarter, className, success) => {
     axios
       .get(`${baseURL}/classes/search`, {
         params: {

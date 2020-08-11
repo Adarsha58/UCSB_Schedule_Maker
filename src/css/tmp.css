@@ -1,0 +1,6 @@
+table th,
+table td {
+  padding: 40px;
+  text-align: center;
+  /* Apply cell padding */
+}

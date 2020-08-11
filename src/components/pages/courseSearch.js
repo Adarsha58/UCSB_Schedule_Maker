@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropdown from "./common/dropdown";
 import ClassBucket from "./sections/classBucket";
 import PageWrapper from "../PageWrapper";
-import CourseSearched from "./sections/CourseSearched";
+import CourseSearched from "./sections/APResponse";
 import * as courses from "../../utils/coursesName";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
@@ -25,7 +25,10 @@ class CourseSearch extends Component {
   render() {
     return (
       <PageWrapper>
-        <div className="main-page-container" style={{ marginBottom: "500px" }}>
+        <div
+          className="main-page-container"
+          style={{ marginBottom: "500px", color: "white" }}
+        >
           <div className="row1-header">
             <h1>MAKE YOUR OWN SCHEDULE!</h1>
           </div>

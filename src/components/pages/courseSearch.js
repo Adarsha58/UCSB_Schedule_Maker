@@ -25,7 +25,10 @@ class CourseSearch extends Component {
   render() {
     return (
       <PageWrapper>
-        <div className="main-page-container" style={{ marginBottom: "500px" }}>
+        <div
+          className="main-page-container"
+          style={{ marginBottom: "500px", color: "white" }}
+        >
           <div className="row1-header">
             <h1>MAKE YOUR OWN SCHEDULE!</h1>
           </div>

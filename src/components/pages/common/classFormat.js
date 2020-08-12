@@ -9,7 +9,6 @@ class courseFormater extends Component {
           <tr>
             <th>Course ID</th>
             <th>Title</th>
-            <th>Section</th>
             <th>Enroll Code</th>
             <th>Days</th>
             <th>Time</th>
@@ -22,13 +21,14 @@ class courseFormater extends Component {
               <tr>
                 <td>{course.courseId}</td>
                 <td>{course.title}</td>
-                <td>{course.classSections[0].section}</td>
                 <td>{course.classSections[0].enrollCode}</td>
                 <td>
                   {course.classSections[0].timeLocations[0]?.days || "TBA"}
                 </td>
                 <td>
-                  {course.classSections[0].timeLocations[0]?.beginTime || "TBA"}
+                  {course.classSections[0].timeLocations[0]
+                    ? `${course.classSections[0].timeLocations[0]?.beginTime}-${course.classSections[0].timeLocations[0]?.endTime}`
+                    : "TBA"}
                 </td>
                 <td>
                   {course.classSections[0].timeLocations[0]

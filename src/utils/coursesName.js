@@ -10,7 +10,7 @@ export const classes = [
   "Biology (Creative Studies) - BIOL CS",
   "Biomolecular Science and Engineering - BMSE",
   "Black Studies - BL ST",
-  "Chemical Engineering CH E",
+  "Chemical Engineering - CH E",
   "Chemistry (Creative Studies) - CHEM CS",
   "Chemistry - CHEM",
   "Chicano Studies - CH ST",

@@ -6,7 +6,11 @@ import Login from "./components/pages/Login";
 import CourseSearch from "./components/pages/courseSearch";
 
 function App() {
-  return <CourseSearch />;
+  return (
+    <PageWrapper>
+      <Login />
+    </PageWrapper>
+  );
 }
 
 export default App;

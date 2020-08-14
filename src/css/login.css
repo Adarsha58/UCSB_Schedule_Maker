@@ -2,13 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
 
-.login-container {
-  width: 40em;
-  height: 40em;
-  background: url(../images/login-background.jpg) no-repeat center/cover;
-  margin-left: 10em;
-  transform: translateX(-3em);
-}
 
 .smalltitle {
   color: white;
@@ -56,29 +49,19 @@
   -webkit-background-clip: text;
 }
 
-.login-form {
-  transform: translate(49em, 26em);
-  width: 40em;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 40px;
-  padding-bottom: 50px;
-  padding-top: 20px;
-  border-radius: 5px;
-  border-style: double;
-  border: 1px solid white;
-}
-
-.row h1 {
-  display: block;
-  width: 100%;
-  font-size: 20px;
-  margin-bottom: 0.25em;
+.formText {
   color: goldenrod;
   font-family: Asap, sans-serif;
   font-weight: normal;
+  padding-bottom: 0.7%;
 }
 
-input {
-  width: 100%;
+.inputText {
   height: 2em;
+  font-size: medium;
+}
+
+.errorMessageForm{
+  color: whitesmoke;
+  font-size: small;
 }

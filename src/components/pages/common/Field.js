@@ -4,12 +4,10 @@ import "../../../css/login.css";
 class Field extends Component {
   render() {
     return (
-      <div className="form-group">
-        <div className="row">
-          <h1>{this.props.name}</h1>
-        </div>
+      <div>
+        <div className="formText">{this.props.name}</div>
         <input
-          className="form-control"
+          className="form-control inputText"
           id={this.props.name.split(" ").join("_")}
           type={this.props.type}
           placeholder={this.props.placeholder}
@@ -19,8 +17,8 @@ class Field extends Component {
           onBlur={this.props.onBlur}
         />
         {this.props.errors && this.props.touched ? (
-          <span>{this.props.errors}</span>
-        ) : null}
+          <span className="errorMessageForm">{this.props.errors}</span>
+        ) : <div style={{minHeight: "2vh"}} />}
       </div>
     );
   }

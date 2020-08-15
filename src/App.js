@@ -3,12 +3,13 @@ import PageWrapper from "./components/PageWrapper";
 
 //pages
 import Login from "./components/pages/Login";
+import UserInstruciton1 from "./components/pages/UserInstruction1";
 import CourseSearch from "./components/pages/courseSearch";
 
 function App() {
   return (
     <PageWrapper>
-      <Login />
+      <UserInstruciton1/>
     </PageWrapper>
   );
 }

@@ -46,6 +46,7 @@ const useStyles = (theme) => ({
     height: "43vh",
     margin: "auto",
     display: "block",
+    marginBottom: "2.5vh"
   },
   button: {
     position: "absolute",
@@ -83,7 +84,7 @@ class Login extends Component {
           <Button
             type="sumbit"
             variant="contained"
-            color="secondary"
+            color="primary"
             size="medium"
             className={classes.button}
             id="form-button"

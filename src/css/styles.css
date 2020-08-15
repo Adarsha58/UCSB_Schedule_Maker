@@ -17,7 +17,7 @@ body {
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
   #login-container {
     padding-left: 5vw;
     padding-top: 18vh;
@@ -60,7 +60,7 @@ body {
 
 .inputText {
   height: 7.3vh;
-  font-size: large;
+  font-size: larger;
 }
 
 .errorMessageForm {

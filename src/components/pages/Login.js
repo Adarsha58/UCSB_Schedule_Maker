@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import Field from "./common/Field";
-import "../../css/login.css";
-import "../../css/main.css";
+import "../../css/styles.css";
 import { withStyles } from "@material-ui/styles";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import Button from "@material-ui/core/Button";
 import API from "../../utils/API";
 import { Container, Typography, Paper, Grid } from "@material-ui/core";
-import ucsbImage from "../../images/login-background.jpg";
+import loginBg from "../../images/loginformlogo.png";
 
 const field = [
   {
-    name: "UCSB Net ID",
+    name: "Username",
     placeholder: "Enter your username...",
     type: "text",
   },
@@ -25,26 +24,35 @@ const field = [
 
 const useStyles = (theme) => ({
   loginContainer: {
-    backgroundColor: "rgb(24, 39, 56)",
-    padding: "6vh",
-    height: "100%",
-    width: "100%"
+    marginTop: "2vh",
+    marginBottom: "5vh",
   },
   loginForm: {
-    background: "rgba(0, 0, 0, 0.6)",
-    borderRadius: "5px",
+    position: "relative",
+    background: "white",
+    borderRadius: "15px",
     borderStyle: "double",
     border: "1px solid white",
     margin: "auto",
-    padding: "2em",
-    overflow: "hidden",
-    paddingBottom: "1em",
+    padding: "5.2vh",
     width: "45vw",
-    height: "40vh",
+    minHeight: "45vh",
+    lineHeight: "3.4vh",
+    flexDirection: "column",
+    boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.5)",
+  },
+  loginImage: {
+    width: "45vw",
+    height: "43vh",
+    margin: "auto",
+    display: "block",
   },
   button: {
-    marginTop: "0.35vw",
-    float: "right",
+    position: "absolute",
+    bottom: "3.5vh",
+    right: "5.2vh",
+    width: "20%",
+    height: "calc(0.7 * 7.3vh)",
   },
 });
 
@@ -52,10 +60,12 @@ class Login extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.loginContainer}>
-        <Container
+      <div className={classes.loginContainer} id="login-container">
+        <div className={classes.loginImage} id="login-image"></div>
+        <form
           onSubmit={this.props.handleSubmit}
           className={classes.loginForm}
+          id="login-form"
         >
           {field.map((field, index) => {
             return (
@@ -76,10 +86,11 @@ class Login extends Component {
             color="secondary"
             size="medium"
             className={classes.button}
+            id="form-button"
           >
             Login
           </Button>
-        </Container>
+        </form>
       </div>
     );
   }
@@ -91,10 +102,11 @@ export default withFormik({
     Password: "",
   }),
   validationSchema: Yup.object().shape({
-    UCSB_Net_ID: Yup.string()
-      .max(15, "*15 characters or less")
-      .required("*UCSB Net Id is required"),
-    Password: Yup.string().required("*Password is required"),
+    Username: Yup.string()
+      .max(15, "15 characters or less!")
+      .min(4, "Minimum 4 characters required!")
+      .required("Username is required!"),
+    Password: Yup.string().required("Password is required!"),
   }),
   handleSubmit: (values, { setSubmitting }) => {
     API.getClasses(values.UCSB_Net_ID, values.Password, (res) => {

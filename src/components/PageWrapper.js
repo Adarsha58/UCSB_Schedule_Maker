@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "../css/main.css";
+import "../css/styles.css";
 import { Container } from "@material-ui/core";
 import logo from "../images/logo.png";
 import { withStyles } from "@material-ui/styles";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import Footer from "./pages/common/footer";
 
 const useStyles = (theme) => ({
   navbar: {
@@ -21,6 +22,12 @@ const useStyles = (theme) => ({
     fontSize: "1.35em",
     fontFamily: "Open Sans Condensed, sans-serif",
   },
+  pageContainer: {
+    position: "relative",
+    minHeight: "100vh",
+    backgroundColor: "#eeeeee",
+    paddingBottom: "10.4919vh",
+  },
 });
 
 class PageWrapper extends Component {
@@ -28,16 +35,21 @@ class PageWrapper extends Component {
     const { classes } = this.props;
 
     return (
-      <div style={{height: "100%"}}>
+      <div className={classes.pageContainer}>
         <AppBar position="static" className={classes.navbar}>
           <Toolbar>
-            <img src={logo} alt="logo" className={classes.logo} />
-            <Typography variant="h6" className={classes.title}>
-              UCSB Schedule Maker
-            </Typography>
+            <a href="/">
+              <img src={logo} alt="logo" className={classes.logo} />
+            </a>
+            <a href="/">
+              <Typography variant="h6" className={classes.title}>
+                UCSB Schedule Maker
+              </Typography>
+            </a>
           </Toolbar>
         </AppBar>
-        {this.props.children}
+        <div className={classes.contentWrap}>{this.props.children}</div>
+        <Footer />
       </div>
     );
   }

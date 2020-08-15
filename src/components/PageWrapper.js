@@ -26,7 +26,7 @@ const useStyles = (theme) => ({
     position: "relative",
     minHeight: "100vh",
     backgroundColor: "#eeeeee",
-    paddingBottom: "10.4919vh",
+    paddingBottom: "10vh",
   },
 });
 

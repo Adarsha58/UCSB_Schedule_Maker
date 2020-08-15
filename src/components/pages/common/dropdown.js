@@ -8,7 +8,7 @@ class Dropdown extends Component {
   render() {
     return (
       <div className={`${this.props.dropdownName}_dropdown`}>
-        <h2>{this.props.dropdownName}</h2>
+        <span>{this.props.message}</span>
         <Select
           className="dropdown"
           name={this.props.dropdownName}

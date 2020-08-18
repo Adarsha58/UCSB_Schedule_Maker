@@ -8,6 +8,56 @@ body {
   height: 100%;
 }
 
+.MenuItem.Mui-selected {
+  /* Increase the specificity */
+  color: blue;
+}
+
+.col {
+  margin: auto;
+  flex-direction: row;
+}
+
+.welcomeText {
+  font-size: 1em;
+  font-family: Lato, serif;
+  font-size: 10vw;
+  margin-bottom: 1vh;
+  animation: fadeInDown 2s;
+}
+
+.dropdownWrapper {
+  border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  font-weight: lighter;
+  animation: backInUp 2.5s;
+  margin: 0 auto;
+  padding-top: 3.8vh;
+  width: 40vw;
+  height: 24vh;
+}
+
+.dropdownText {
+  color: rgb(31, 32, 25);
+  font-size: larger;
+  font-weight: lighter;
+}
+
+.dropdownNameText {
+  margin-right: 1vw;
+  font-size: large;
+}
+
+.buttonContainer {
+  position: absolute;
+  margin-top: 2vh;
+  right: 13vw;
+  animation: fadeInUp 4s;
+}
+
 @media screen and (min-width: 1900px) {
   #login-form {
     max-height: 45vh;
@@ -17,7 +67,7 @@ body {
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 765px) {
   #login-container {
     padding-left: 5vw;
     padding-top: 18vh;
@@ -40,6 +90,23 @@ body {
     width: calc(100% - 6vmax);
     right: 3vmax;
     bottom: 5.3vmax;
+  }
+
+  .welcomeText {
+    margin-top: 10vh;
+    font-size: 12vw;
+    margin-bottom: 1vh;
+  }
+
+  .dropdownWrapper {
+    width: 80vw;
+    height: 20vh;
+    padding-top: 4vh;
+    margin-top: 7vh;
+  }
+
+  .dropdownText {
+    font-size: 3vw;
   }
 }
 

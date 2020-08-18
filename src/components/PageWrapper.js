@@ -27,6 +27,10 @@ const useStyles = (theme) => ({
     minHeight: "100vh",
     backgroundColor: "#eeeeee",
     paddingBottom: "10vh",
+    overflow: "hidden",
+  },
+  contentWrap: {
+    width: "100%",
   },
 });
 

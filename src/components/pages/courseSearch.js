@@ -3,7 +3,6 @@ import Dropdown from "./common/dropdown";
 import ClassBucket from "./sections/classBucket";
 import PageWrapper from "../PageWrapper";
 import CourseSearched from "./sections/APResponse";
-import * as courses from "../../utils/coursesName";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import * as APIAction from "../../store/actions/API_response_action";
@@ -16,7 +15,7 @@ const dropdowns = [
   },
   {
     dropdownName: "Classes",
-    options: courses.classes,
+    options: ["ehy"],
     defaultValue: "Computer Science - CMPSC",
   },
 ];

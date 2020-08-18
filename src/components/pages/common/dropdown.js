@@ -7,10 +7,15 @@ import * as DropdownAction from "../../../store/actions/DropdownAction";
 class Dropdown extends Component {
   render() {
     return (
-      <div className={`${this.props.dropdownName}_dropdown`}>
-        <span>{this.props.message}</span>
+      <div
+        className={`${this.props.dropdownName}_dropdown`}
+        style={{ marginBottom: "2.5vh" }}
+      >
+        <span className="dropdownNameText">{this.props.message}</span>
         <Select
-          className="dropdown"
+          fullWidth
+          style={{ minWidth: this.props.minWidth }}
+          variant={this.props.variant}
           name={this.props.dropdownName}
           defaultValue={this.props.defaultValue}
           onChange={(event) =>
@@ -22,8 +27,8 @@ class Dropdown extends Component {
         >
           {this.props.options.map((option, index) => {
             return (
-              <MenuItem key={index} value={option}>
-                {option}
+              <MenuItem key={index} value={option} className="MenuItem">
+                <span className="dropdownText">{option}</span>
               </MenuItem>
             );
           })}

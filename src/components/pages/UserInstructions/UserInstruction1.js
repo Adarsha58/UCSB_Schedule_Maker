@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Container, Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import Dropdown from "../common/dropdown";
 import "../../../css/styles.css";
@@ -21,8 +21,8 @@ const dropdowns = [
 
 const classes = (theme) => ({
   instructionContainer: {
+    textAlign: "center",
     marginTop: "5%",
-    dispaly: "inline-block",
   },
 });
 
@@ -36,12 +36,17 @@ class UserInstruction1 extends Component {
             <div className="welcomeText">Let's get started!</div>
           </div>
         </div>
-        <div className="row">
+        <div className="row dropdownWrapper">
           <div className="col">
             {dropdowns.map((dropdown, index) => {
               return <Dropdown {...dropdown} key={index} />;
             })}
           </div>
+        </div>
+        <div className="buttonContainer">
+          <Button color="primary" variant="contained">
+            Next
+          </Button>
         </div>
       </div>
     );

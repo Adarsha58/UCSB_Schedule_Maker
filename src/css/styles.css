@@ -42,8 +42,6 @@ body {
 
 .dropdownText {
   color: rgb(31, 32, 25);
-  font-size: larger;
-  font-weight: lighter;
 }
 
 .dropdownNameText {
@@ -116,6 +114,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#mui-component-select-Instructor{
+  padding-right: 2rem;
+  padding-bottom: 0.05rem;
+  padding-top: 0rem;
+
 }
 
 .formText {

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import CourseFormater from "../common/classFormater";
 
 const test = {
+  instructor: "Phill Conrad",
+  rating: "5.0",
   courseTitle: "Advanced Applications Programming",
   days: "MW",
   time: "9:30 AM-10:45 AM",
@@ -10,7 +12,8 @@ const test = {
   enrollCode: "62745",
   units: "4.0",
   openSeats: "5/72",
-  description: "Advanced application programming using a high-level, virtual-machine-based language. Topics include generic programming, exception handling, automatic memory management, and application development, management, and maintenance tools, third-party library use, version control, software testing, issue tracking, code review, and working with legacy code.",
+  description:
+    "Advanced application programming using a high-level, virtual-machine-based language. Topics include generic programming, exception handling, automatic memory management, and application development, management, and maintenance tools, third-party library use, version control, software testing, issue tracking, code review, and working with legacy code.",
 };
 
 class CourseSearched extends Component {
@@ -18,11 +21,23 @@ class CourseSearched extends Component {
     return (
       <div>
         <div>
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
+          <CourseFormater {...test} />
           {typeof this.props.API_response === "undefined" ||
           Object.keys(this.props.API_response).length === 0 ? (
             <div>No Classes Found</div>
           ) : (
-            <CourseFormater  {...test} />
+            <CourseFormater {...test} />
           )}
         </div>
       </div>

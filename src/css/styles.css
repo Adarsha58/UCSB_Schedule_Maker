@@ -49,6 +49,7 @@ body {
 .dropdownNameText {
   margin-right: 1vw;
   font-size: large;
+  font-weight: bold;
 }
 
 .buttonContainer {

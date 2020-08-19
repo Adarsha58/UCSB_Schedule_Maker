@@ -5,6 +5,8 @@ import Dropdown from "../common/dropdown";
 import TextFields from "../common/textField";
 import * as courses from "../../../utils/coursesName";
 import { connect } from "react-redux";
+import * as APIAction from "../../../store/actions/API_response_action";
+import CourseSearched from "../sections/APResponse";
 
 const dropdowns = [
   {
@@ -14,6 +16,7 @@ const dropdowns = [
     options: ["Department", "GE"],
     variant: "outlined",
     minWidth: "20vw",
+    fullWidth: true
   },
   {
     dropdownName: "Classes",
@@ -22,6 +25,7 @@ const dropdowns = [
     defaultValue: "Computer Science - CMPSC",
     variant: "outlined",
     minWidth: "40vw",
+    fullWidth: true
   },
   {
     dropdownName: "College",
@@ -30,6 +34,7 @@ const dropdowns = [
     variant: "outlined",
     minWidth: "20vw",
     defaultValue: "Engineering",
+    fullWidth: true
   },
   {
     dropdownName: "Area",
@@ -38,6 +43,7 @@ const dropdowns = [
     variant: "outlined",
     minWidth: "15vw",
     defaultValue: "LS",
+    fullWidth: true
   },
 ];
 
@@ -48,21 +54,26 @@ const classes = (theme) => ({
   paper: {
     padding: theme.spacing(2),
   },
-  topRow: {
-    marginTop: "5vh",
-  },
   secondRow: {
     marginTop: "3vh",
   },
   thirdRow: {
     marginTop: "2vh",
   },
+  topPaper: {
+  
+    marginLeft: "1vw",
+    marginRight: "1vw",
+    paddingTop: "5vh",
+    marginTop: "2.5vh",
+  }
 });
 
 class UserInstruction2 extends Component {
   render() {
     const { classes } = this.props;
     return (
+      <Paper className={classes.topPaper}>
       <div className={`container-fluid ${classes.instructionContainer}`}>
         <div className={`row ${classes.topRow}`}>
           <div className="col col-sm-auto">
@@ -74,10 +85,10 @@ class UserInstruction2 extends Component {
               <Dropdown key={1} {...dropdowns[1]} />
             </div>
           ) : (
-            <div className="col col-md-auto">
-              <Dropdown key={2} {...dropdowns[2]} />
-            </div>
-          )}
+              <div className="col col-md-auto">
+                <Dropdown key={2} {...dropdowns[2]} />
+              </div>
+            )}
         </div>
         <div className={`row ${classes.secondRow}`}>
           <div className="col col-md-auto">
@@ -90,20 +101,43 @@ class UserInstruction2 extends Component {
         </div>
         <div className={`row ${classes.thirdRow}`}>
           {this.props.filter_selected === "Department" ? (
-            <div className="col col-md-auto" style={{ paddingLeft: "80.95vw" }}>
-              <Button color="primary" size="large" variant="contained">
+            <div className="col col-md-auto" style={{ paddingLeft: "79.95vw" }}>
+              <Button color="primary" size="large" variant="contained"
+                onClick={() =>
+                  this.props.handleSearch(
+                    this.props.quarter_selected,
+                    this.props.course_selected
+                  )
+                }>
                 Search
               </Button>
             </div>
           ) : (
-            <div className="col col-md-auto">
-              <Button color="primary" size="large" variant="contained">
-                Search
+              <div className="col col-md-auto">
+                <Button color="primary" size="large" variant="contained">
+                  Search
               </Button>
-            </div>
-          )}
+              </div>
+            )}
         </div>
+        <div className={`row ${classes.fourthRow}`}>
+          <div className="col col-lg-auto">
+            <Paper>
+              <div className="ListAllClasses" style={{ marginTop: "200px" }}>
+                {
+                  <CourseSearched
+                    quarter={this.props.quarter_selected}
+                    subjectArea={this.props.course_selected}
+                    sytle={{ marginTop: "200px" }}
+                  />
+                }
+              </div>
+            </Paper>
+          </div>
+        </div>
+     
       </div>
+      </Paper>
     );
   }
 }
@@ -111,7 +145,15 @@ class UserInstruction2 extends Component {
 const mapStateToProps = (state) => {
   return {
     filter_selected: state.DropdownReducer.dropdown_value_find_by_filter,
+    quarter_selected: state.DropdownReducer.dropdown_value_quarter,
+    course_selected: state.DropdownReducer.dropdown_value_courses,
   };
 };
 
-export default connect(mapStateToProps)(withStyles(classes)(UserInstruction2));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleSearch: (quarter, courseName) => { dispatch(APIAction.API_CALL(quarter, courseName)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(classes)(UserInstruction2));

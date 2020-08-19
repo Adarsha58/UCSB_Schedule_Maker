@@ -11,6 +11,7 @@ function App() {
   return (
     <PageWrapper>
       <UserInstruciton2 />
+
     </PageWrapper>
   );
 }

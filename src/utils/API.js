@@ -35,6 +35,7 @@ const API = {
         },
       })
       .then((res) => {
+        console.log(res);
         success(res);
       });
   },

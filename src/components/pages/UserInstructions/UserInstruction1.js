@@ -39,7 +39,7 @@ class UserInstruction1 extends Component {
         <div className="row dropdownWrapper">
           <div className="col">
             {dropdowns.map((dropdown, index) => {
-              return <Dropdown {...dropdown} key={index} />;
+              return <Dropdown fullWidth={false} {...dropdown} key={index} />;
             })}
           </div>
         </div>

@@ -13,7 +13,7 @@ class Dropdown extends Component {
       >
         <span className="dropdownNameText">{this.props.message}</span>
         <Select
-          fullWidth
+          fullWidth={this.props.fullWidth}
           style={{ minWidth: this.props.minWidth }}
           variant={this.props.variant}
           name={this.props.dropdownName}

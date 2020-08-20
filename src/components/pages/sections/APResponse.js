@@ -21,18 +21,6 @@ class CourseSearched extends Component {
     return (
       <div>
         <div>
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
-          <CourseFormater {...test} />
           {typeof this.props.API_response === "undefined" ||
           Object.keys(this.props.API_response).length === 0 ? (
             <div>No Classes Found</div>

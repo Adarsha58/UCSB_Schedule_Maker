@@ -13,11 +13,6 @@ body {
   color: blue;
 }
 
-.col {
-  margin: auto;
-  flex-direction: row;
-}
-
 .welcomeText {
   font-size: 1em;
   font-family: Lato, serif;

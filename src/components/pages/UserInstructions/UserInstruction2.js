@@ -24,7 +24,6 @@ const dropdowns = [
     options: courses.classes,
     defaultValue: "Computer Science - CMPSC",
     variant: "outlined",
-    minWidth: "40vw",
     fullWidth: true
   },
   {
@@ -32,7 +31,6 @@ const dropdowns = [
     message: "College: ",
     options: ["Letter & Science", "Engineering", "Creative Studies"],
     variant: "outlined",
-    minWidth: "20vw",
     defaultValue: "Engineering",
     fullWidth: true
   },
@@ -43,7 +41,7 @@ const dropdowns = [
     variant: "outlined",
     minWidth: "15vw",
     defaultValue: "LS",
-    fullWidth: true
+    fullWidth: false,
   },
 ];
 
@@ -54,14 +52,16 @@ const classes = (theme) => ({
   paper: {
     padding: theme.spacing(2),
   },
-  secondRow: {
-    marginTop: "3vh",
+  row: {
+    marginTop: "2.5vh",
   },
-  thirdRow: {
-    marginTop: "2vh",
+  secondRow: {
+    float: "right",
+  },
+  fourthRow: {
+    border: "black solid",
   },
   topPaper: {
-  
     marginLeft: "1vw",
     marginRight: "1vw",
     paddingTop: "5vh",
@@ -75,33 +75,33 @@ class UserInstruction2 extends Component {
     return (
       <Paper className={classes.topPaper}>
       <div className={`container-fluid ${classes.instructionContainer}`}>
-        <div className={`row ${classes.topRow}`}>
-          <div className="col col-sm-auto">
+
+        <div className={`row ${classes.row}`}>
+          <div className="col-lg-6">
             <Dropdown key={0} {...dropdowns[0]} />
           </div>
 
           {this.props.filter_selected === "Department" ? (
-            <div className="col col-md-auto">
+            <div className="col-lg-6">
               <Dropdown key={1} {...dropdowns[1]} />
             </div>
           ) : (
-              <div className="col col-md-auto">
+              <div className="col-lg-6">
                 <Dropdown key={2} {...dropdowns[2]} />
               </div>
             )}
         </div>
-        <div className={`row ${classes.secondRow}`}>
-          <div className="col col-md-auto">
+
+        <div className={`row ${classes.row} ${classes.secondRow}`}>
+          <div className="col-lg-12">
             {this.props.filter_selected === "GE" ? (
-              <div className="col col-md-auto">
                 <Dropdown key={3} {...dropdowns[3]} />
-              </div>
             ) : null}
           </div>
         </div>
-        <div className={`row ${classes.thirdRow}`}>
+        <div className={`row ${classes.row} ${classes.thirdRow}`}>
           {this.props.filter_selected === "Department" ? (
-            <div className="col col-md-auto" style={{ paddingLeft: "79.95vw" }}>
+            <div className="col-lg-4 float-right">
               <Button color="primary" size="large" variant="contained"
                 onClick={() =>
                   this.props.handleSearch(
@@ -113,7 +113,7 @@ class UserInstruction2 extends Component {
               </Button>
             </div>
           ) : (
-              <div className="col col-md-auto">
+              <div className="col-lg-4 float-right">
                 <Button color="primary" size="large" variant="contained">
                   Search
               </Button>
@@ -121,8 +121,7 @@ class UserInstruction2 extends Component {
             )}
         </div>
         <div className={`row ${classes.fourthRow}`}>
-          <div className="col col-lg-auto">
-            <Paper>
+          <div className="col-lg-12">
               <div className="ListAllClasses" style={{ marginTop: "200px" }}>
                 {
                   <CourseSearched
@@ -132,7 +131,6 @@ class UserInstruction2 extends Component {
                   />
                 }
               </div>
-            </Paper>
           </div>
         </div>
      

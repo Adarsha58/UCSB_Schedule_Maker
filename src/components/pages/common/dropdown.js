@@ -29,7 +29,17 @@ class Dropdown extends Component {
         >
           {this.props.options.map((option, index) => {
             return (
-              <MenuItem key={index} value={option} className="MenuItem">
+              <MenuItem
+                key={index}
+                data-index={index.toString()}
+                value={option}
+                className="MenuItem"
+                onClick={
+                  this.props.onChangeHandler
+                    ? (e) => this.props.onChangeHandler(index)
+                    : null
+                }
+              >
                 <span style={{ fontSize: this.props.fontSize }}>{option}</span>
               </MenuItem>
             );

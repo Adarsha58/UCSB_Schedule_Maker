@@ -1,46 +1,68 @@
-const test = {
-  instructors: [],
-  rating: "5.0",
-  courseTitle: "",
-  days: "",
-  time: "",
-  location: "",
-  enrollCode: "",
-  units: "",
-  openSeats: "",
-  description: "",
-};
+//parsing the information of one class: most of them are array in order to store possible multiple instructors teaching the same class
 
 const courseParser = (course) => {
-  if (course.length == 0) {
-    return test;
-  }
-  test.courseTitle = course.title.trim() + ":" + course.courseId.trim();
-  test.description = course.description.trim();
-  const mainSection = course.classSections[0];
-  if (mainSection) {
-    test.instructors = "N/A";
-    test.days = mainSection.timeLocations[0]?.days || "TBA";
-    test.time = mainSection.timeLocations[0]
-      ? `${course.classSections[0].timeLocations[0]?.beginTime}-${course.classSections[0].timeLocations[0]?.endTime}`
-      : "TBA";
-    test.location = mainSection.timeLocations[0]
-      ? `${course.classSections[0].timeLocations[0]?.building} ${course.classSections[0].timeLocations[0]?.room}`
-      : "TBA";
-    test.enrollCode = mainSection.enrollCode;
-    test.openSeats = calc(
-      mainSection.maxEnroll - mainSection.enrolledTotal
-    ).toString();
-  } else {
-    test.instructor = "N/A";
-    test.days = "N/A";
-    test.time = "N/A";
-    test.location = "N/A";
-    test.enrollCode = "N/A";
-    test.openSeats = "N/A";
-  }
+  const timeParser = (time) => {
+    let hourMinuteSplit = time.split(":");
 
-  return test;
+    if (parseInt(hourMinuteSplit[0]) >= 12) {
+      hourMinuteSplit[1] += "PM";
+    } else {
+      hourMinuteSplit[1] += "AM";
+    }
+    if (parseInt(hourMinuteSplit[0]) > 12) {
+      hourMinuteSplit[0] = parseInt(hourMinuteSplit[0]) - 12;
+    }
+    return hourMinuteSplit.join(":");
+  };
+
+  let classInfo = {
+    instructors: [],
+    rating: "5.0",
+    courseTitle: "",
+    days: [],
+    time: [],
+    locations: [],
+    enrollCode: [],
+    units: "",
+    openSeats: [],
+    description: "",
+  };
+  classInfo.courseTitle = course.courseId.trim() + ": " + course.title.trim();
+  classInfo.description = course.description.trim();
+  classInfo.units = course.unitsFixed ? course.unitsFixed : "Varies";
+
+  course.classSections.map((classSection) => {
+    if (parseInt(classSection.section, 10) % 100 == 0) {
+      classInfo.instructors.push(
+        classSection.instructors[0]?.instructor || "TBA"
+      );
+      classInfo.days.push(classSection.timeLocations[0]?.days || "TBA");
+      classInfo.time.push(
+        classSection.timeLocations[0]
+          ? classSection.timeLocations[0].beginTime
+            ? `${timeParser(
+                classSection.timeLocations[0].beginTime
+              )}-${timeParser(classSection.timeLocations[0].endTime)}`
+            : "TBA"
+          : "TBA"
+      );
+      classInfo.locations.push(
+        classSection.timeLocations[0]
+          ? `${classSection.timeLocations[0]?.building || "TB"} ${
+              classSection.timeLocations[0]?.room || "A"
+            }`
+          : "TBA"
+      );
+      classInfo.enrollCode.push(classSection.enrollCode);
+      classInfo.openSeats.push(
+        classSection.enrolledTotal + "/" + classSection.maxEnroll
+      );
+    }
+  });
+
+  classInfo.instructors.push("No Preference");
+
+  return classInfo;
 };
 
 export default courseParser;

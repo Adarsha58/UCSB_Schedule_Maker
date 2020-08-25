@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Grid, Paper, Button } from "@material-ui/core";
+import { Paper, Button, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Dropdown from "../common/dropdown";
-import TextFields from "../common/textField";
 import * as courses from "../../../utils/coursesName";
 import { connect } from "react-redux";
 import * as APIAction from "../../../store/actions/API_response_action";
@@ -54,7 +53,6 @@ const classes = (theme) => ({
     marginTop: "2.5vh",
   },
   fourthRow: {
-    margin: "inherit",
     marginTop: "2.5vh",
   },
   topPaper: {
@@ -63,13 +61,21 @@ const classes = (theme) => ({
     paddingTop: "5vh",
     marginTop: "2.5vh",
   },
+  coursePaper: {
+    marginBottom: "3vh",
+    backgroundColor: "#FFFAF0",
+    borderRadius: "10px",
+  },
+  serachResultTitle: {
+    fontSize: "10em",
+  },
 });
 
 class UserInstruction2 extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Paper className={classes.topPaper} elevation={5}>
+      <Paper className={classes.topPaper} elevation={1}>
         <div className={`container-fluid ${classes.instructionContainer}`}>
           <div className={`row ${classes.row}`}>
             <div className="col-lg-6">
@@ -105,7 +111,10 @@ class UserInstruction2 extends Component {
                   onClick={() =>
                     this.props.handleSearch(
                       this.props.quarter_selected,
-                      this.props.course_selected
+                      this.props.course_selected,
+                      this.props.level_selected,
+                      "none",
+                      "none"
                     )
                   }
                 >
@@ -120,10 +129,12 @@ class UserInstruction2 extends Component {
                   size="large"
                   variant="contained"
                   onClick={() =>
-                    this.props.handleSearch(
-                      this.props.quarter_selected,
-                      this.props.course_selected
-                    )
+                    // this.props.handleSearch(
+                    //   this.props.quarter_selected,
+                    //   this.props.course_selected,
+                    //   this.props.level_selected
+                    // )
+                    {}
                   }
                 >
                   Search
@@ -133,26 +144,40 @@ class UserInstruction2 extends Component {
           </div>
 
           <div className={`row ${classes.row} ${classes.fourthRow}`}>
-            <Paper
-              variant="outlined"
-              elevation={20}
-              //NightMode in my mind style={{ backgroundColor: "#242526", color: "white" }}
-            >
-              <div className="col-lg-12">
-                {Object.keys(this.props.course_results).length === 0 &&
-                this.props.course_results.constructor === Object
-                  ? null
-                  : this.props.course_results.classes.map((course) => {
-                      return (
+            {Object.keys(this.props.course_results).length === 0 &&
+            this.props.course_results.constructor === Object ? null : (
+              <React.Fragment>
+                <div className="col-6">
+                  <span className={classes.searchResultTitle}>
+                    &nbsp;Search Results:&nbsp;
+                    {this.props.course_results.total}
+                  </span>
+                </div>
+                <div className="col-6">
+                  <div className="search-bar" style={{ float: "right" }}>
+                    <span className={classes.searchResultTitle}>Course#:</span>
+                  </div>
+                </div>
+                <div className="w-100"></div>
+                <div className="col-lg-12">
+                  {this.props.course_results.classes.map((course) => {
+                    return (
+                      <Paper
+                        variant="outlined"
+                        elevation={5}
+                        key={course.courseId}
+                        className={classes.coursePaper}
+                      >
                         <CourseFormater
-                          key={course.courseId}
                           {...courseParser(course)}
                           courseId={course.courseId}
                         />
-                      );
-                    })}
-              </div>
-            </Paper>
+                      </Paper>
+                    );
+                  })}
+                </div>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </Paper>
@@ -165,14 +190,15 @@ const mapStateToProps = (state) => {
     filter_selected: state.DropdownReducer.dropdown_value_find_by_filter,
     quarter_selected: state.DropdownReducer.dropdown_value_quarter,
     course_selected: state.DropdownReducer.dropdown_value_courses,
+    level_selected: state.DropdownReducer.dropdown_value_level,
     course_results: state.APIResponseReducer.response_api,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSearch: (quarter, courseName) => {
-      dispatch(APIAction.API_CALL(quarter, courseName));
+    handleSearch: (quarter, courseName, level) => {
+      dispatch(APIAction.API_CALL(quarter, courseName, level));
     },
   };
 };

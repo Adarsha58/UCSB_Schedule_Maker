@@ -1,5 +1,6 @@
 import axios from "axios";
-const baseURL = "https://api.ucsb.edu/academics/curriculums/v1";
+const ucsbEndpoint = "https://api.ucsb.edu/academics/curriculums/v1";
+const webScrapperEndpoint = "http://localhost:3000";
 
 function quarterParser(quarter) {
   switch (quarter.toUpperCase()) {
@@ -22,13 +23,14 @@ function classNameParser(className) {
 }
 
 const API = {
-  getClasses: async (quarter, className, pageSize, success) => {
+  getClasses: async (quarter, className, level, college, areas, success) => {
     axios
-      .get(`${baseURL}/classes/search`, {
+      .get(`${ucsbEndpoint}/classes/search`, {
         params: {
           quarter: quarterParser(quarter),
           subjectCode: classNameParser(className),
-          pageSize,
+          pageSize: 3500,
+          objLevelCode: level[0],
         },
         headers: {
           "ucsb-api-key": process.env.REACT_APP_ucsb_api_key,

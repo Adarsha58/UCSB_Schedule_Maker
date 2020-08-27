@@ -172,23 +172,19 @@ class UserInstruction2 extends Component {
                   <div className="col-6">
                     <span className={classes.searchResultTitle}>
                       &nbsp;Search Results:&nbsp;
-                      {this.props.course_results.total}
+                      {this.props.course_results.length}
                     </span>
                   </div>
-                  <div className="col-6">
+                  {/* <div className="col-6">
                     <div className="search-bar" style={{ float: "right" }}>
                       <span className={classes.searchResultTitle}>
                         Course#:
                       </span>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="w-100"></div>
                   <div className="col-lg-12">
-                    {filterRequired(
-                      this.props.course_results.classes,
-                      this.props.college_selected,
-                      this.props.filter_selected
-                    ).map((course) => {
+                    {this.props.course_results.map((course) => {
                       return (
                         <Paper
                           variant="outlined"
@@ -229,7 +225,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSearch: (quarter, courseName, level, college, area) => {
-      console.log(quarter, courseName, level, college, area);
       dispatch(APIAction.API_CALL(quarter, courseName, level, college, area));
     },
   };

@@ -27,7 +27,6 @@ const API = {
     let params = {};
 
     console.log(quarter, className, level, college, area);
-    if (className !== "none") console.log("first condition");
     className !== "none"
       ? (params = {
           quarter: quarterParser(quarter),
@@ -50,8 +49,6 @@ const API = {
         },
       })
       .then((res) => {
-        console.log(res);
-        let sortedResponse = res;
         success(res);
       });
   },

@@ -3,8 +3,8 @@ const defaultState = {
   dropdown_value_quarter: "FALL 2020",
   dropdown_value_courses: "Computer Science - CMPSC",
   dropdown_value_find_by_filter: "Department",
-  dropdown_value_college: "LS",
-  dropdown_value_area: "A",
+  dropdown_value_college: "ENGR - Engineering",
+  dropdown_value_area: "Area A1 - English Reading and Composition",
 };
 
 const dropdownValues = (state = defaultState, action) => {
@@ -32,12 +32,12 @@ const dropdownValues = (state = defaultState, action) => {
     case "DROPDOWN_SELECTED_COLLEGE":
       return {
         ...state,
-        dropdown_value_find_by_college: action.payload,
+        dropdown_value_college: action.payload,
       };
     case "DROPDOWN_SELECTED_AREA":
       return {
         ...state,
-        dropdown_value_find_by_college: action.payload,
+        dropdown_value_area: action.payload,
       };
     default:
       return state;

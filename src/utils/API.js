@@ -23,21 +23,35 @@ function classNameParser(className) {
 }
 
 const API = {
-  getClasses: async (quarter, className, level, college, areas, success) => {
-    axios
-      .get(`${ucsbEndpoint}/classes/search`, {
-        params: {
+  getClasses: async (quarter, className, level, college, area, success) => {
+    let params = {};
+
+    console.log(quarter, className, level, college, area);
+    if (className !== "none") console.log("first condition");
+    className !== "none"
+      ? (params = {
           quarter: quarterParser(quarter),
           subjectCode: classNameParser(className),
           pageSize: 3500,
           objLevelCode: level[0],
-        },
+        })
+      : (params = {
+          quarter: quarterParser(quarter),
+          pageSize: 3500,
+          objLevelCode: level[0],
+          areas: area.split(" ")[1],
+        });
+
+    axios
+      .get(`${ucsbEndpoint}/classes/search`, {
+        params,
         headers: {
           "ucsb-api-key": process.env.REACT_APP_ucsb_api_key,
         },
       })
       .then((res) => {
         console.log(res);
+        let sortedResponse = res;
         success(res);
       });
   },

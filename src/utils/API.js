@@ -30,20 +30,20 @@ const API = {
     className !== "none"
       ? (params = {
           quarter: quarterParser(quarter),
+          pageSize: 200,
           subjectCode: classNameParser(className),
-          pageSize: 3500,
           objLevelCode: level[0],
         })
       : (params = {
           quarter: quarterParser(quarter),
-          pageSize: 3500,
+          pageSize: 200,
           objLevelCode: level[0],
           areas: area.split(" ")[1],
         });
 
     axios
       .get(`${ucsbEndpoint}/classes/search`, {
-        params,
+        params: params,
         headers: {
           "ucsb-api-key": process.env.REACT_APP_ucsb_api_key,
         },

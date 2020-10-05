@@ -194,6 +194,7 @@ class UserInstruction2 extends Component {
                         >
                           <CourseFormater
                             {...courseParser(course)}
+                            course={course}
                             courseId={course.courseId}
                           />
                         </Paper>

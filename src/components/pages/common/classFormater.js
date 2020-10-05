@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Typography, Tooltip } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Dropdown from "./dropdown";
+import { connect } from "react-redux";
 // Icons
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -11,6 +12,7 @@ import StarIcon from "@material-ui/icons/Star";
 
 //APIs
 import API from "../../../utils/API";
+import * as buttonHandler from "../../../store/actions/AddToSchedule_action";
 
 const useStyles = (theme) => ({
   root: {
@@ -76,6 +78,9 @@ class CourseFormater extends Component {
               variant="contained"
               color="secondary"
               className={classes.btn}
+              onClick={() => {
+                this.props.handleClick(this.props.course);
+              }}
             >
               Add To Schedule
             </Button>
@@ -187,4 +192,15 @@ class CourseFormater extends Component {
   }
 }
 
-export default withStyles(useStyles)(CourseFormater);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleClick: (selected_class) => {
+      dispatch(buttonHandler.scheduleButton(selected_class));
+    },
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(useStyles)(CourseFormater));
